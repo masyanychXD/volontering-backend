@@ -35,5 +35,5 @@ export const eventsRelations = relations(events, ({ one, many }) => ({
 export type Direction = typeof directions.$inferSelect;
 export type NewDirection = typeof directions.$inferInsert;
 
-export type Event = typeof directions.$inferSelect;
-export type NewEvent = typeof directions.$inferInsert;
+export type Event = typeof events.$inferSelect;
+export type NewEvent = typeof events.$inferInsert;
