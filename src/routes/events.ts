@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
     try {
         const { search, direction, page = 1, limit = 10} = req.query;
 
-        const currentPage = Math.max(1, +page);
-        const limitPerPage = Math.max(1, +limit);
+        const currentPage = Math.max(1, parseInt(String(page), 10) || 1);
+        const limitPerPage = Math.min(Math.max(1, parseInt(String(limit), 10) || 10), 100);
 
         const offset = (currentPage - 1) * limitPerPage;
 
@@ -27,7 +27,8 @@ router.get("/", async (req, res) => {
         }
 
         if (direction) {
-            filterConditions.push(ilike(directions.name, `%${direction}%`));
+            const directionPattern = `%${String(direction).replace(/[%_]/g, '\\$&')}%`;
+            filterConditions.push(ilike(directions.name, directionPattern));
         }
 
         const whereClause = filterConditions.length > 0 ? and(...filterConditions) : undefined;
@@ -42,8 +43,8 @@ router.get("/", async (req, res) => {
 
         const eventsList = await db.select({ ...getTableColumns(events), direction: {...getTableColumns(directions)}
         }).from(events).leftJoin(directions, eq(events.directionID, directions.id))
-            .where(whereClause).
-            orderBy(desc(events.createdAt))
+            .where(whereClause)
+            .orderBy(desc(events.createdAt))
             .limit(limitPerPage)
             .offset(offset);
 
