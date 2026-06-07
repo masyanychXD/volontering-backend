@@ -8,6 +8,13 @@
       "when": 1779654594911,
       "tag": "0000_mighty_tarantula",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1780848925547,
+      "tag": "0001_amusing_maelstrom",
+      "breakpoints": true
     }
   ]
 }
