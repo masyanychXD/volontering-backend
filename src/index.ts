@@ -2,6 +2,7 @@ import express from 'express';
 import cors from "cors";
 
 import eventsRouter from "./routes/events";
+import securityMiddleware from "./middleware/security";
 
 const app = express();
 const PORT = 8000;
@@ -13,6 +14,8 @@ app.use(cors({
 }))
 
 app.use(express.json());
+
+app.use(securityMiddleware);
 
 app.use('/api/events', eventsRouter);
 
