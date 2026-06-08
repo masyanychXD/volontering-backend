@@ -2,7 +2,7 @@ import express from "express";
 import { and, desc, eq, getTableColumns, ilike, or, sql } from "drizzle-orm";
 
 import { db } from "../db/index.js";
-import { events, sessions, user , enrollments} from "../db/schema/index.js";
+import { events, sessions, user , enrollments, directions} from "../db/schema/index.js";
 
 const router = express.Router();
 
@@ -143,9 +143,13 @@ router.get("/:id", async (req, res) => {
                 coordinator: {
                     ...getTableColumns(user),
                 },
+                direction: {
+                    ...getTableColumns(directions),
+                },
             })
             .from(sessions)
             .leftJoin(events, eq(sessions.eventId, events.id))
+            .leftJoin(directions, eq(events.directionId, directions.id))
             .leftJoin(user, eq(sessions.coordinatorId, user.id))
             .where(eq(sessions.id, sessionId));
 
