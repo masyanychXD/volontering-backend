@@ -31,7 +31,7 @@
     "types": ["node"],
 
     /* Ignore deprecation warnings */
-    "ignoreDeprecations": "5.0"
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src", "drizzle.config.ts"]
 }
