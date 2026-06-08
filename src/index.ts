@@ -2,14 +2,14 @@ import cors from "cors";
 import express from "express";
 import { toNodeHandler } from "better-auth/node";
 
-import eventsRouter from "./routes/events.js";
-import usersRouter from "./routes/users.js";
-import sessionsRouter from "./routes/sessions.js";
-import directionsRouter from "./routes/directions.js";
-import enrollmentsRouter from "./routes/enrollments.js";
-import statsRouter from "./routes/stats.js";
-// import securityMiddleware from "./middleware/security.js";
-import { auth } from "./lib/auth.js";
+import eventsRouter from "./routes/events";
+import usersRouter from "./routes/users";
+import sessionsRouter from "./routes/sessions";
+import directionsRouter from "./routes/directions";
+import enrollmentsRouter from "./routes/enrollments";
+import statsRouter from "./routes/stats";
+import securityMiddleware from "./middleware/security";
+import { auth } from "./lib/auth";
 
 const app = express();
 const PORT = 8000;
