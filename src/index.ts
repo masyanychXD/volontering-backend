@@ -16,12 +16,8 @@ const PORT = 8000;
 
 app.use(
     cors({
-        origin: [
-            process.env.FRONTEND_URL!,
-            "https://volontering-frontend.vercel.app"
-        ],
+        origin: "*",
         methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-        credentials: true,
     })
 );
 
