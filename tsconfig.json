@@ -4,13 +4,12 @@
     "target": "ES2022",
     "lib": ["ES2022"],
 
-
     /* Node ESM */
     "module": "ES2022",
     "moduleResolution": "node",
 
     /* Project structure */
-    "rootDir": "src",
+    "rootDir": ".",
     "outDir": "dist",
 
     /* Type safety */
@@ -29,7 +28,10 @@
     "skipLibCheck": true,
 
     /* Environment types */
-    "types": ["node"]
+    "types": ["node"],
+
+    /* Ignore deprecation warnings */
+    "ignoreDeprecations": "5.0"
   },
-  "include": ["src","drizzle.config.ts"]
+  "include": ["src", "drizzle.config.ts"]
 }
