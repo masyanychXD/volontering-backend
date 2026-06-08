@@ -6,7 +6,10 @@ import * as schema from "../db/schema/auth.js";
 
 export const auth = betterAuth({
     secret: process.env.BETTER_AUTH_SECRET!,
-    trustedOrigins: [process.env.FRONTEND_URL!],
+    trustedOrigins: [
+        process.env.FRONTEND_URL!,
+        "https://volontering-frontend.vercel.app"
+    ],
     database: drizzleAdapter(db, {
         provider: "pg",
         schema,
