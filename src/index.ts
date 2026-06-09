@@ -8,7 +8,7 @@ import sessionsRouter from "./routes/sessions.js";
 import directionsRouter from "./routes/directions.js";
 import enrollmentsRouter from "./routes/enrollments.js";
 import statsRouter from "./routes/stats.js";
-// import securityMiddleware from "./middleware/security.js";
+import securityMiddleware from "./middleware/security.js";
 import { auth } from "./lib/auth.js";
 
 const app = express();
@@ -29,7 +29,7 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 
 app.use(express.json());
 
-// app.use(securityMiddleware);
+app.use(securityMiddleware);
 
 app.use("/api/events", eventsRouter);
 app.use("/api/users", usersRouter);
